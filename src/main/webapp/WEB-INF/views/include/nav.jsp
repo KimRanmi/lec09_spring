@@ -12,6 +12,9 @@
 				<li>
 					<a href="#">회원가입</a>
 				</li>
+				<li>
+					<a href="/board">게시판</a>
+				</li>
 			</ul>
 		</div>
 		<div class="search">

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 <!-- TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+<!-- 내가 원하는 레벨로 설정할 수 있음 -->
 	<Appenders> 
 			<!-- 콘솔 -->
 	    <Console name="Console_Appender" target="SYSTEM_OUT">
