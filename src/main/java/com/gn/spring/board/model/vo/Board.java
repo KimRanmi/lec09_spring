@@ -20,4 +20,6 @@ public class Board extends Paging {
 	private String board_title;
 	private String board_content;
 	private Date reg_date;
+	private int search_type= 1;
+	private String search_text;
 }

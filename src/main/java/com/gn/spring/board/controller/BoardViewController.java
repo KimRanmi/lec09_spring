@@ -36,9 +36,7 @@ public class BoardViewController {
 	// 2. Model(매개변수 설정!)
 	@GetMapping("/board")
 	public String selectBoardList(Model model, Board option) {
-		
-		option.setTotalData(boardService.selectBoardCount());
-		
+		option.setTotalData(boardService.selectBoardCount(option));
 		List<Board> resultList = boardService.selectBoardList(option);
 		LOGGER.info(resultList);
 		

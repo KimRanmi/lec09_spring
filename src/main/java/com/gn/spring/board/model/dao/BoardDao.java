@@ -18,7 +18,7 @@ public class BoardDao {
 		return sqlSession.selectList("boardMapper.selectBoardList",option);
 	}
 	
-	public int selectBoardCount() {
-		return sqlSession.selectOne("boardMapper.selectBoardCount");
+	public int selectBoardCount(Board option) {
+		return sqlSession.selectOne("boardMapper.selectBoardCount",option);
 	}
 }

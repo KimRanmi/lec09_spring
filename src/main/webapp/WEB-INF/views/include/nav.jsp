@@ -13,14 +13,21 @@
 					<a href="#">회원가입</a>
 				</li>
 				<li>
-					<a href="/board">게시판</a>
+					<a href="<c:url value='/board'/>">게시판</a>
 				</li>
 			</ul>
 		</div>
 		<div class="search">
-			<form>
-				<input type="text">
-				<input type="button" value="검색">
+			<form action="<c:url value='/board'/>" method="get">
+				<!-- <input type="text" name="board_title" placeholder="검색어를 입력하세요"
+				value="<c:out value='${paging.board_title}'/>"> -->
+				<select name="search_type">
+					<option value="1" <c:if test="${paging.search_type == '1'}">selected</c:if>>제목</option>
+					<option value="2" <c:if test="${paging.search_type == '2'}">selected</c:if>>내용</option>
+					<option value="3" <c:if test="${paging.search_type == '3'}">selected</c:if>>제목 + 내용</option>
+				</select>
+				<input type="text" name="search_text" placeholder="검색어를 입력하세요">
+				<input type="submit" value="검색">
 			</form>
 		</div>
 	</div>

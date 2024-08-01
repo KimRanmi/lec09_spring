@@ -7,7 +7,7 @@
 	<div id="header_wrap">
 		<div class="title">	
 			<h3>
-				<a class="user" href="/board">게시판</a>
+				<a class="user" href="<c:url value='/board'/>">게시판</a>
 			</h3>
 		</div>
 	</div>

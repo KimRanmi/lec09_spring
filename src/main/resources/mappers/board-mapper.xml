@@ -7,10 +7,57 @@
 	parameterType="com.gn.spring.board.model.vo.Board">
 		SELECT * 
 		FROM `board`
+		<if test='search_text != null and search_text.equals("") == false'>
+			<where>
+			<!-- <if test='board_title != null and board_title.equals("") == false'>
+				board_title LIKE CONCAT('%',#{board_title},'%')
+			</if> -->
+			<choose>
+				<when test='search_type != null and search_type == 1'>
+					board_title LIKE CONCAT('%',#{search_text},'%')
+				</when>
+				<when test='search_type != null and search_type == 2'>
+					board_content LIKE CONCAT('%',#{search_text},'%')
+				</when>
+				<otherwise>
+					board_title LIKE CONCAT('%',#{search_text},'%')
+					OR board_content LIKE CONCAT ('%',#{search_text},'%')
+				</otherwise>
+			</choose>
+		</where>
+		</if>
+		<!-- <where>
+			<if test='board_title != null and board_title.equals("") == false'>
+				AND board_title LIKE CONCAT ('%',#{board_title},'%')
+			</if>
+			
+		</where> -->
 		LIMIT #{limitPageNo}, #{numPerPage}
 	</select>
-	<select id="selectBoardCount" resultType="int">
+	
+	
+	<select id="selectBoardCount" resultType="int" parameterType="com.gn.spring.board.model.vo.Board">
 		select count(*)
 		from `board`
+		<if test='search_text != null and search_text.equals("") == false'>
+			<where>
+			<!-- <if test='board_title != null and board_title.equals("") == false'>
+				board_title LIKE CONCAT('%',#{board_title},'%')
+			</if> -->
+			<choose>
+				<when test='search_type != null and search_type == 1'>
+					board_title LIKE CONCAT('%',#{search_text},'%')
+				</when>
+				<when test='search_type != null and search_type == 2'>
+					board_content LIKE CONCAT('%',#{search_text},'%')
+				</when>
+				<otherwise>
+					board_title LIKE CONCAT('%',#{search_text},'%')
+					OR board_content LIKE CONCAT ('%',#{search_text},'%')
+				</otherwise>
+			</choose>
+		</where>
+		</if>
+		
 	</select>
 </mapper>
