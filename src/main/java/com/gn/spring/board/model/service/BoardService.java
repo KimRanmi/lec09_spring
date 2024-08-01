@@ -15,14 +15,26 @@ public class BoardService {
 	@Autowired
 	BoardDao boardDao;
 	
-	public List<Board> selectBoardList(){
+	// 리스트 추출
+	public List<Board> selectBoardList(Board option){
 		List<Board> resultList = new ArrayList<Board>();
 		try {
-			resultList = boardDao.selectBoardList();
+			resultList = boardDao.selectBoardList(option);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return resultList;
+	}
+	
+	// 페이징
+	public int selectBoardCount() {
+		int result = 0;
+		try {
+			result = boardDao.selectBoardCount();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 }
