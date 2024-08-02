@@ -77,7 +77,8 @@
 							</c:if>
 	  					</div>
 					</div>
-				<input type="button" value="등록" style="float:right;">
+				<input type="button" value="등록" style="float:right;" 
+				onclick="location.href='<c:url value="/board/create"/>'">
 			</div>
 		</div>
 	</section>

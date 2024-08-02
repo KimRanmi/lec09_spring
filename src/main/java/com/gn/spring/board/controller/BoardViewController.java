@@ -45,4 +45,10 @@ public class BoardViewController {
 		// /WEB-INF/views/board/list.jsp
 		return "/board/list";
 	}
+	
+	@GetMapping("/board/create")
+	public String createBoardPage() {
+		// /WEB-INF/views/board/create.jsp
+		return "/board/create";
+	}
 }
