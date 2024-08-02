@@ -21,4 +21,20 @@ public class BoardDao {
 	public int selectBoardCount(Board option) {
 		return sqlSession.selectOne("boardMapper.selectBoardCount",option);
 	}
+	
+	public int insertBoard(Board option) {
+		return sqlSession.insert("boardMapper.insertBoard",option);
+	}
+	
+	public Board selectBoardOne(int board_no) {
+		return sqlSession.selectOne("boardMapper.selectBoardOne",board_no);
+	}
+	
+	public int updateBoard(Board vo) {
+		return sqlSession.update("boardMapper.updateBoard",vo);
+	}
+	
+	public int deleteBoard(Board option) {
+		return sqlSession.delete("boardMapper.deleteBoard",option);
+	}
 }

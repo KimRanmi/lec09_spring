@@ -37,4 +37,48 @@ public class BoardService {
 		return result;
 	}
 	
+	// insert
+	public int insertBoard(Board option) {
+		int result = 0;
+		try {
+			result = boardDao.insertBoard(option);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	// 상세보기 
+	public Board selectBoardOne(int board_no) {
+		Board board = null;
+		try {
+			board = boardDao.selectBoardOne(board_no);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return board;
+	}
+	
+	// 수정하기
+	public int updateBoard(Board vo) {
+		int result = 0;
+		try {
+			result = boardDao.updateBoard(vo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	// 삭제하기
+	public int deleteBoard(Board option) {
+		int result = 0;
+		try {
+			result = boardDao.deleteBoard(option);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }

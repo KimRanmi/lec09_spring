@@ -58,6 +58,29 @@
 			</choose>
 		</where>
 		</if>
-		
 	</select>
+	<insert id="insertBoard" parameterType="com.gn.spring.board.model.vo.Board">
+		insert into `board` 
+		(board_title,board_content,ori_thumbnail,new_thumbnail) 
+		values (#{board_title},#{board_content},#{ori_thumbnail},#{new_thumbnail})
+	</insert>
+	<select id="selectBoardOne" parameterType="_int" resultType="com.gn.spring.board.model.vo.Board">
+		select * from `board`
+		<where>
+			board_no = #{board_no}
+		</where>
+	</select>
+	<update id="updateBoard" parameterType="com.gn.spring.board.model.vo.Board">
+		update `board` set 
+		board_title = #{board_title} , board_content = #{board_content}
+		<if test="ori_thumbnail != null">
+		, ori_thumbnail = #{ori_thumbnail}, new_thumbnail = #{new_thumbnail}
+		</if>
+		<where>
+		board_no = #{board_no}
+		</where> 
+	</update>
+	<delete id="deleteBoard" parameterType="com.gn.spring.board.model.vo.Board">
+		delete from `board` where board_no = #{board_no}
+	</delete>
 </mapper>
