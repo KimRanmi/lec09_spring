@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,11 +20,9 @@ import com.gn.spring.board.model.vo.Board;
 @Controller
 public class BoardApiController {
 	
-	private static final Logger LOGGER
-		= LogManager.getLogger(BoardApiController.class);
-	
 	@Autowired
 	UploadFileService uploadFileService;
+	
 	@Autowired
 	BoardService boardService;
 	
@@ -44,7 +43,6 @@ public class BoardApiController {
 			vo.setOri_thumbnail(file.getOriginalFilename());
 			vo.setNew_thumbnail(savedFileName);
 		
-			LOGGER.info("Board 데이터 : "+vo);
 			// BoardService 의존성 주입
 			// service -> dao -> mapper 게시글 insert
 			int result =  boardService.insertBoard(vo);
@@ -75,8 +73,6 @@ public class BoardApiController {
 			
 		}
 		
-		LOGGER.info("수정 데이터 : "+vo);
-		
 		int result = boardService.updateBoard(vo);
 		
 		if(result > 0) {
@@ -87,5 +83,22 @@ public class BoardApiController {
 		return resultMap;
 	}
 	
+	@ResponseBody
+	@DeleteMapping("/board/{board_no}")
+	public Map<String,String> deleteBoard(Board option){
+		Map<String,String> resultMap = new HashMap<String,String>();
+		
+		resultMap.put("res_code", "404");
+		resultMap.put("res_msg","게시글 삭제 중 오류가 발생하였습니다.");
+		
+		int result = boardService.deleteBoard(option);
+		
+		if(result > 0) {
+			resultMap.put("res_code", "200");
+			resultMap.put("res_msg", "게시글이 성공적으로 삭제 되었습니다.");
+		}
+		
+		return resultMap;
+	}
 	
 }

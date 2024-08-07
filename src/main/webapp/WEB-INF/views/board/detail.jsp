@@ -51,12 +51,25 @@
 			
 			<div class="buttons">
 				<a class="update_board_button" href="<c:url value='/board/update/${detail.board_no }'/>">게시글 수정</a>
-				<a class="delete_board_button" href="<c:url value='/board/delete/${detail.board_no }'/>">게시글 삭제</a>			
+				<a class="delete_board_button" onclick="deleteFrm();" href="<c:url value='/board/${detail.board_no }'/>">게시글 삭제</a>			
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-
+		const deleteFrm = function(){
+			if(confirm("정말 삭제 하시겠습니까?")){
+			fetch('<%= request.getContextPath()%>/board/${detail.board_no}',{
+				method : 'DELETE',
+			})
+			.then(response => response.json())
+				.then(data => {
+					alert(data.res_msg);
+					if(data.res_code == '200'){
+						location.href="<%=request.getContextPath()%>/board";
+					}
+				})
+			}
+		};
 	</script>	
 </body>
 </html>

@@ -18,8 +18,7 @@ public class BoardViewController {
 	
 	@Autowired // 의존성(주입된 변수명 사용해서 ..)
 	BoardService boardService;
-	
-	private static final Logger LOGGER = LogManager.getLogger(BoardViewController.class);
+
 	
 	// 화면단에 데이터 보내는 방법
 	// 1. ModelAndView(데이터가 무거워서 요즘 잘 사용하지 않음)
@@ -39,7 +38,6 @@ public class BoardViewController {
 	public String selectBoardList(Model model, Board option) {
 		option.setTotalData(boardService.selectBoardCount(option));
 		List<Board> resultList = boardService.selectBoardList(option);
-		LOGGER.info(resultList);
 		
 		model.addAttribute("resultList",resultList);
 		model.addAttribute("paging",option);
@@ -55,7 +53,6 @@ public class BoardViewController {
 	
 	@GetMapping("/board/{board_no}")
 	public String selectBoardOne(@PathVariable("board_no") int board_no,Model model) {
-		LOGGER.info("게시글 PK : "+board_no);
 		
 		Board board = boardService.selectBoardOne(board_no); 
 		model.addAttribute("detail",board);
@@ -68,19 +65,6 @@ public class BoardViewController {
 		Board vo = boardService.selectBoardOne(board_no);
 		model.addAttribute("vo",vo);
 		return "/board/update";
-	}
-	
-	@GetMapping("/board/delete/{board_no}")
-	public String deleteBoard(Board option,Model model) {
-		boardService.deleteBoard(option);
-		option.setTotalData(boardService.selectBoardCount(option));
-		List<Board> resultList = boardService.selectBoardList(option);
-		LOGGER.info(resultList);
-		
-		model.addAttribute("resultList",resultList);
-		model.addAttribute("paging",option);
-		
-		return "/board/list";
 	}
 	
 }

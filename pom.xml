@@ -14,6 +14,22 @@
   </properties>
   <dependencies>
 	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>5.7.2</version>
+	</dependency>
+	<!-- Spring Security 의존성 설정 -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>5.7.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>5.7.2</version>
+	</dependency>
+	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
 		<version>${org.springframework-version}</version>
@@ -39,6 +55,17 @@
 		<groupId>org.aspectj</groupId>
 		<artifactId>aspectjrt</artifactId>
 		<version>${org.aspectj-version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.springframework.security</groupId>
+    	<artifactId>spring-security-taglibs</artifactId>
+    	<version>5.7.2</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.aspectj</groupId>
+    	<artifactId>aspectjweaver</artifactId>
+    	<version>${org.aspectj-version}</version>
+    	<scope>runtime</scope>
 	</dependency>	
 	<!-- Logging -->
 	<dependency>
@@ -137,7 +164,13 @@
     	<groupId>org.codehaus.jackson</groupId>
     	<artifactId>jackson-mapper-asl</artifactId>
     	<version>1.9.13</version>
-	</dependency> 
+	</dependency>
+		<!-- Websocket 적용 -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-websocket</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>  
   </dependencies>
   <build>
     <plugins>
